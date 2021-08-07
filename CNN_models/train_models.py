@@ -24,8 +24,8 @@ import matplotlib.pyplot as plt
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # device = torch.device("cuda")
 parser = argparse.ArgumentParser()
-parser.add_argument('--outf', default='F:/yzh/DeepLearningDataSet/model_16/', help='folder to output images and model checkpoints') #模型保存路径
-parser.add_argument('--net', default='/model/net.pth', help="path to netG (to continue training)")  #模型加载路径
+parser.add_argument('--outf', default='F:/yzh/DeepLearningDataSet/model_16/', help='folder to output images and model checkpoints') 
+parser.add_argument('--net', default='/model/net.pth', help="path to netG (to continue training)")  
 opt = parser.parse_args()
 
 
@@ -92,7 +92,7 @@ test_data4=MyDataset(txt=dataset+'test4.txt', transform=transform1)
 
 train_data=train_data2+test_data2+train_data3+test_data3+train_data4+test_data4
 test_data=train_data1+test_data1
-#加载数据
+
 trainloader = DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 #testloader = DataLoader(dataset=test_data, batch_size=8)
 testloader = DataLoader(dataset=test_data)
@@ -129,7 +129,7 @@ class LeNet(nn.Module):
         )
         self.fc3 = nn.Linear(84, 3)
 
-    # 定义前向传播过程，输入为x
+   
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
@@ -185,7 +185,7 @@ class LeNet12(nn.Module):
         )
         self.fc3 = nn.Linear(84, 3)
 
-    # 定义前向传播过程，输入为x
+    
     def forward(self, x):
         # print(x.size())
         x = self.conv1(x)
